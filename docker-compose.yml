@@ -1,0 +1,40 @@
+
+services:
+  visualizer:
+    image: janikmiet/sleeprevolution_visualization
+    container_name: visualizer
+    restart: unless-stopped
+    ports:
+      - "9000:3838"
+  calculator:
+    image: janikmiet/sleeprevolution_calculator
+    container_name: calculator
+    restart: unless-stopped
+    expose:
+      - "3838"
+  prediction:
+    image: janikmiet/sleeprevolution_prediction
+    container_name: prediction
+    restart: unless-stopped
+    expose:
+      - "3838"
+  caddy:
+    image: caddy:2.3.0-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - $PWD/Caddyfile:/etc/caddy/Caddyfile
+      - $PWD/site:/srv
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - visualizer
+      - calculator
+      - prediction
+volumes:
+  caddy_data:
+  caddy_config:
+
+
