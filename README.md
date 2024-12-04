@@ -6,10 +6,13 @@ Launches 3 application with Caddy webservice. Launch Caddy instance by command:
 docker-compose up
 ```
 
-
+![](example.png)
 
 
 ## References
+
+This docker instance launches Sleep Apnea Cost Visualizer, Calculator and Predictor 
+Shiny applications.
 
 Shiny applications in docker hub:
 - [Visualizer](https://hub.docker.com/r/janikmiet/sleeprevolution_visualizer)
