@@ -2,7 +2,7 @@
     email jani.miettinen@uef.fi
 }
 
-:80 {
+:3841 {
     root * /srv
     handle_path /visualizer/* {
         reverse_proxy visualizer:3838
